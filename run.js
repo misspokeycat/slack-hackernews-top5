@@ -51,7 +51,7 @@ exports.myHandler = function(event, context, callback) {
         console.log(messageText);
         request(
         {
-            url: 'https://hooks.slack.com/services/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',
+            url: SLACK_INCOMING_WEBHOOK_URL,
             method: "POST",
             body: {
                text: messageText
