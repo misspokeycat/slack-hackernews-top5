@@ -1,5 +1,5 @@
 {
-  "name": "slack-hackernews-poster",
+  "name": "slack-hackernews-top5",
   "version": "1.0.0",
   "description": "Slack bot for posting top Hackernews stories.",
   "main": "run.js",
@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.4.6",
-    "request": "^2.75.0",
     "request-promise": "^4.1.1"
   }
 }
