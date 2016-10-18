@@ -23,7 +23,7 @@ exports.myHandler = function(event, context, callback) {
                 //We only want the top 5 stories of the day.
                 //Since this will give us top stories over the course of a few days,
                 //ensure the timestamp is <24 hours from now.
-                var storyDate = new Date((storyData.time + 24*60*60)*1000);
+                var storyDate = new Date((storyData.time + 30*60*60)*1000);
                 var now = new Date();
                 if (storyDate > now){
                     topStories.push(storyData);
@@ -42,6 +42,10 @@ exports.myHandler = function(event, context, callback) {
         //Now that stories has the top 5 stories of the day, post to Slack.
         var messageText = "Here are the top 5 stories of the day from HN:";
         for (var story in stories){
+            // Create a URL to link to if it's an ask HN post
+            if (!stories[story].url){
+                stories[story].url = "https://news.ycombinator.com/item?id=" + stories[story].id;
+            }
             //1. Link to some article (x points) 
             var count = Number(story) + 1;
             messageText = messageText + "\n" + count +
