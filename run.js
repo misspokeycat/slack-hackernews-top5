@@ -22,7 +22,8 @@ exports.myHandler = function(event, context, callback) {
                 var storyData = JSON.parse(storyDataJson);
                 //We only want the top 5 stories of the day.
                 //Since this will give us top stories over the course of a few days,
-                //ensure the timestamp is <24 hours from now.
+                //ensure the timestamp is <30 hours from now.
+                // (With 30, we allow stories posted around noon of the prior day to get more points.)
                 var storyDate = new Date((storyData.time + 30*60*60)*1000);
                 var now = new Date();
                 if (storyDate > now){
